@@ -1,0 +1,7 @@
+.yearStyle.ng-valid {
+	background: transparent;
+}
+.yearStyle.ng-invalid {
+	color: white;
+	background: red;
+}
