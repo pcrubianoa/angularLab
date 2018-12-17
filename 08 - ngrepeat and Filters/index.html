@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html style="font-size: 16pt" ng-app="myApp">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/ctrlAndVis2.css" />
+		<script src="js/angular.min.js"></script>
+		<script src="js/filter.js"></script>
+	</head>
+	<body ng-controller="bookCtrl as book">
+
+		<div ng-controller="tabCtrl as tab">
+			<ul>
+				<li ng-class="{active:tab.isSet(1), inactive:!tab.isSet(1)}">
+					<a href ng-click="tab.setTab(1)">Edit</a>
+				</li>
+				<li ng-class="{active:tab.isSet(2), inactive:!tab.isSet(2)}">
+					<a href ng-click="tab.setTab(2)">Preview</a>
+				</li>
+			</ul>
+
+			<div ng-show="tab.isSet(1)">
+				Title - <strong>{{book.title}}</strong><br />
+				Author - {{book.author}}<br />
+				Year - {{ book.getYear() }}
+				<p></p>
+				<label>Title :
+					<input type="text" ng-model="book.title"/>
+				</label>
+				<br />
+				<label>Author :
+					<input type="text" ng-model="book.author"/>
+				</label>
+				<br />
+				<label>Year :
+					<input type="text" name="BookNumber" class="yearStyle"
+					       ng-model="book.year" ng-pattern="/^[+-]?\d+$/" />
+				</label>
+				<br />
+				<button type="button" ng-click="book.addBook()">Add Book</button>
+				<p></p>
+				<div ng-repeat="b in book.books | orderBy:'title'">
+					Title - <strong>{{b.title}}</strong><br />
+					Author - {{b.author}}<br />
+					Year - {{ b.year | BCifier }}<br />
+					<hr />
+				</div>
+			</div>
+			<div ng-show="tab.isSet(2)">
+				<img src="http://cdn.oreillystatic.com/images/sitewide-headers/ml-header-home-blinking.gif" />
+				<h1>Rare Books Collection</h1>
+				<i>The place to go when no one else has it!</i>
+				<p></p>
+				<input type="text" ng-model="authorSearch"/>
+				<hr />
+				<div class="preview" ng-repeat="b in book.books | filter: {author: authorSearch}">
+					Title - <strong>{{b.title}}</strong><br />
+					Author - {{b.author}}<br />
+					Year - {{ b.year | BCifier }}<br />
+					<button>Purchase</button>
+					<hr />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
