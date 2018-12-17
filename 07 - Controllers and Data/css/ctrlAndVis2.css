@@ -1,0 +1,35 @@
+.yearStyle.ng-valid {
+	background: transparent;
+}
+.yearStyle.ng-invalid {
+	color: white;
+	background: red;
+}
+
+.btn{
+    text-decoration: none;
+}
+
+.active {
+    list-style: none;
+    padding: 10px;
+    display:inline-block;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid black;
+	border-radius: 5px;
+}
+
+.inactive {
+    list-style: none;
+    padding: 10px;
+    display:inline-block;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid black;
+	border-radius: 5px;
+}
+
+.preview {
+	background-color: #CCCCCC;
+}
