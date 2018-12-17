@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html style="font-size: 16pt">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<style>
+			.bookIDStyle-valid {
+				background: transparent;
+			}
+			.bookIDStyle-invalid {
+				color: white;
+				background: red;
+			}
+		</style>
+		<script>
+			$(document).ready(function() {
+				$('#BookID').on('input', function() {
+					var input = $(this);
+					var re = /^\d+$/;
+					var isNum = re.test(input.val());
+					if (isNum) {
+						input.removeClass("bookIDStyle-invalid").addClass("bookIDStyle-valid");
+					} else {
+						input.removeClass("bookIDStyle-valid").addClass("bookIDStyle-invalid");
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form id="myForm" method="get" action="">
+			<label for="BookID">Book number : </label>
+			<input type="text" id="BookID" name="BookNumber" class="bookIDStyle-valid"/>
+		</form>
+	</body>
+</html>

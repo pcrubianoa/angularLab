@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html style="font-size: 16pt" ng-app="myApp">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script src="js/angular.min.js"></script>
+		<script src="js/controller.js"></script>
+		<style>
+			.bookIDStyle.ng-valid {
+				background: transparent;
+			}
+			.bookIDStyle.ng-invalid {
+				color: white;
+				background: red;
+			}
+		</style>
+	</head>
+	<body ng-controller="bookCtrl">
+		<form id="myForm" method="get" action="">
+			<label for="BookID">Book number : </label>
+			<input type="text" id="BookID" name="BookNumber" class="bookIDStyle"
+			       ng-model="bookID" ng-pattern="/^\d+$/" />
+		</form>
+	</body>
+</html>
