@@ -1,14 +1,21 @@
-var app = angular.module('JSONgetter', []);
-app.controller('JSONCtrl', function($scope, $http) {
-	$scope.date = "";
-	$scope.time = "";
-
-	$http.get("http://127.0.0.1:5500/09%20-%20get%20Json/data/date.json").then(function(response) {
-		$scope.date = response.data.date;
-		$scope.time = response.data.time;
-	}, function(response) {
-		$scope.date = "Error connecting to server";
-	});
+angular.module('AJAXApp', [])
+.controller('AJAXController', function($scope, $http) {
+	$scope.posts = [];
+	$scope.newPost = {};
+    $http.get("https://jsonplaceholder.typicode.com/posts")
+		.then(function (response) {
+			console.log(response);
+			$scope.posts = response.data;
+		});
+	$scope.addPost = function(){
+		$http.post("https://jsonplaceholder.typicode.com/posts", {
+			title: $scope.newPost.title,
+			body: $scope.newPost.body,
+			userId: 1
+		})
+		.then(function(data) {
+			$scope.posts.push($scope.newPost);
+			$scope.newPost = {};
+		});
+	}
 });
-
-// {"date":"9/5","time":"3:40"}

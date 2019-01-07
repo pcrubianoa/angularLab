@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html style="font-size: 16pt" ng-app="JSONgetter">
+<html style="font-size: 16pt" ng-app="AJAXApp">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/angular.min.js"></script>
-		<script src="js/getJSON.js"></script>
+		<script src="js/controller.js"></script>
 	</head>
 
-	<body>
-		<div ng-controller="JSONCtrl as json">
-			Time: {{time}}
-			<br />
-			Date: {{date}}
-			<br />
-		</div>
+	<body ng-controller="AJAXController">
+        <input type="text" ng-model="newPost.title">
+        <br>
+        <textarea ng-model="newPost.body"></textarea>
+        <br>
+        <button ng-click="addPost()">Send</button>
+        <ul>
+            <li ng-repeat="post in posts">
+                <h2>{{ post.title }}</h2>
+                <p>
+                    {{ post.body }}
+                </p>
+            </li>
+        </ul>
 	</body>
 </html>
