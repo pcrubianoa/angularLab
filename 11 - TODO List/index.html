@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html style="font-size: 16pt" ng-app="todoList">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+		
+		<script src="https://rawgit.com/grevory/angular-local-storage/master/dist/angular-local-storage.min.js"></script>
+        <script src="js/controller.js"></script>
+	</head>
+
+	<body ng-controller="todoController">
+        <ol>
+            <li ng-repeat="activity in todo">
+                {{ activity.title }} - 
+                <sub style="color:grey">{{ activity.date | date : "fullDate" }}</sub>
+            </li>
+        </ol>
+        <form ng-submit="addActivity()">
+            <input type="text" ng-model="newActivity.title">
+            <input type="date" ng-model="newActivity.date">
+            <input type="submit" value="Save Activity">
+        </form>
+        <button ng-click="todo = []">Clean</button>
+	</body>
+</html>
