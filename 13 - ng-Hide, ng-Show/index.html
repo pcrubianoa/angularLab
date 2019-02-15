@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html style="font-size: 16pt" ng-app="AJAXApp">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script src="js/angular.min.js"></script>
+		<script src="js/controller.js"></script>
+	</head>
+
+	<body ng-controller="AJAXController">
+        <input type="text" ng-model="newPost.title">
+        <br>
+        <textarea ng-model="newPost.body"></textarea>
+        <br>
+        <button ng-click="addPost()">Send</button>
+        <ul ng-show="posts.length != 0">
+        <!-- <ul ng-hide="posts.length == 0"> -->
+            <li ng-repeat="post in posts">
+                <h2>{{ post.title }}</h2>
+                <p>
+                    {{ post.body }}
+                </p>
+            </li>
+        </ul>
+	</body>
+</html>
