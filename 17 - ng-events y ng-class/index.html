@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="ToDoList">
+
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script src="https://rawgit.com/grevory/angular-local-storage/master/dist/angular-local-storage.min.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+
+<body ng-controller="ToDoController">
+    <div>
+        <button 
+        ng-mouseover="var = true" 
+        ng-mouseout="var = false"
+        ng-class="{ 'hover' : flag, 'no-hover' : !flag }">
+            Hover me
+        </button>
+        <p ng-show="var">Click me</p>
+    </div>
+
+    <div>
+        <button ng-click="flag = !flag">
+            click me
+        </button>
+        <p>{{ flag | json }}</p>
+    </div>
+</body>
+
+</html>
