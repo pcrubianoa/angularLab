@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="customDirective">
+
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script src="https://rawgit.com/grevory/angular-local-storage/master/dist/angular-local-storage.min.js"></script>
+    <script src="js/controller.js"></script>
+    <style>
+        .circle{
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body ng-controller="customController">
+        <ul ng-cloak>
+            <li ng-repeat="repo in repos">
+                <div class="circle"
+                     back-img="{{ repo.owner.avatar_url }}"></div>
+            </li>
+        </ul>
+</body>
+
+</html>
