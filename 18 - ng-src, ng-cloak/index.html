@@ -11,8 +11,8 @@
 <body ng-controller="customController">
 
         <ul ng-cloak>
-            <li>
-                <img ng-src="{{ repos }}" alt="">{{ repos }}
+            <li ng-repeat="repo in repos">
+                <img ng-src="{{ repo.owner.avatar_url }}">
             </li>
         </ul>
     
