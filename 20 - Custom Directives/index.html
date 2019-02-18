@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/jquery-ui.css"> 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title></title>
+    <script src="js/jquery-2.2.3.js"></script>
+    <script src="js/jquery-ui.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+
+<body ng-app="App">
+        <div id="container" class="container" ng-controller="AppCtrl">
+            <input type="text" my-autocomplete="repos" placeholder="Buscar repositorio">
+            <ul class="no-list" ng-cloak>
+                <li ng-repeat="repo in posts" ng-hide="main_repo && main_repo != repo.name">
+                    <div class="circular avatarGithub" back-img="{{repo.owner.avatar_url}}"></div>
+                    <h1 class="inline-block">{{ repo.full_name }}</h1>
+                </li>
+            </ul>
+            <a id="limpiar" ng-show="main_repo" ng-click="clean()">Limpiar</a>
+        </div>
+    </body>
+
+</html>
